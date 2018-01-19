@@ -66,7 +66,7 @@ public class YoBitAdapters {
 
       BigDecimal minSize = value.getMin_amount();
       Integer priceScale = value.getDecimal_places();
-      currencyPairs.put(pair, new CurrencyPairMetaData(value.getFee(), minSize, null, priceScale));
+      currencyPairs.put(pair, new CurrencyPairMetaData(value.getFee(), minSize, null, priceScale,null));
 
       if (!currencies.containsKey(pair.base)) {
         CurrencyMetaData currencyMetaData = exchangeMetaData.getCurrencies().get(pair.base);

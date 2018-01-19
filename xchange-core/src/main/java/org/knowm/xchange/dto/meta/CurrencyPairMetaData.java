@@ -25,8 +25,14 @@ public class CurrencyPairMetaData implements Serializable {
   @JsonProperty("max_amount")
   private final BigDecimal maximumAmount;
 
+  /** The scale of the LimitOrder.limitPrice when placing a Limit order. This is usually the scale of the counter/quote currency  */
   @JsonProperty("price_scale")
   private final Integer priceScale;
+
+
+  /** The scale of the order size (Order.originalAmount) when placing an order. This is usually the scale of the base currency */
+  @JsonProperty("order_size_scale")
+  private final Integer orderSizeScale;
 
   /**
    * Constructor
@@ -37,12 +43,14 @@ public class CurrencyPairMetaData implements Serializable {
    * @param priceScale Price scale
    */
   public CurrencyPairMetaData(@JsonProperty("trading_fee") BigDecimal tradingFee, @JsonProperty("min_amount") BigDecimal minimumAmount,
-      @JsonProperty("max_amount") BigDecimal maximumAmount, @JsonProperty("price_scale") Integer priceScale) {
+      @JsonProperty("max_amount") BigDecimal maximumAmount, @JsonProperty("price_scale") Integer priceScale,
+                              @JsonProperty("order_size_scale") Integer orderSizeScale) {
 
     this.tradingFee = tradingFee;
     this.minimumAmount = minimumAmount;
     this.maximumAmount = maximumAmount;
     this.priceScale = priceScale;
+    this.orderSizeScale = orderSizeScale;
   }
 
   public BigDecimal getTradingFee() {
@@ -65,11 +73,16 @@ public class CurrencyPairMetaData implements Serializable {
     return priceScale;
   }
 
+  public Integer getOrderSizeScale() {
+    return orderSizeScale;
+  }
+
   @Override
   public String toString() {
 
     return "CurrencyPairMetaData [tradingFee=" + tradingFee + ", minimumAmount=" + minimumAmount + ", maximumAmount=" + maximumAmount
         + ", priceScale=" + priceScale + "]";
   }
+
 
 }

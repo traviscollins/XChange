@@ -302,7 +302,8 @@ public class GDAXAdapters {
 
       CurrencyPairMetaData staticMetaData = exchangeMetaData.getCurrencyPairs().get(pair);
       int priceScale = staticMetaData == null ? 8 : staticMetaData.getPriceScale();
-      CurrencyPairMetaData cpmd = new CurrencyPairMetaData(null, minSize, maxSize, priceScale);
+      int orderSizeScale = staticMetaData == null ? 8 : staticMetaData.getOrderSizeScale();
+      CurrencyPairMetaData cpmd = new CurrencyPairMetaData(null, minSize, maxSize, priceScale,orderSizeScale);
       currencyPairs.put(pair, cpmd);
 
       if (!currencies.containsKey(pair.base))
